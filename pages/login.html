@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="form">
+        <h1>Sign Up</h1>
+        <div class="form-group">
+            <input type="text" placeholder=" " id="name">
+            <label for="name">Name</label>
+            <div class="error">
+                <i class="fas fa-exclamation-circle"></i>
+                Error encountered!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" placeholder=" " id="password">
+            <label for="password">Password</label>
+            <div class="error">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+        </div>
+
+        <input type="button" value="Log In" onclick="signUp()">
+        <div class="form-bottom">
+            <a href="#">Forgot Password?</a>
+        </div>
+    </form>
+</body>
+
+</html>
+<script src="../js/login.js"></script>

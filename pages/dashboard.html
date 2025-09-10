@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title h2 {
+            margin: 0;
+        }
+
+        .title button {
+            background-color: white;
+            color: #4a90e2;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .title button:hover {
+            background-color: #e6f0fb;
+        }
+
+        .postMaker {
+            background-color: white;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+
+        .postMaker input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #post {
+            display: block;
+            margin: 0 auto 40px auto;
+            padding: 12px 30px;
+            font-size: 16px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #post:hover {
+            background-color: #357ab8;
+        }
+
+        #blogPreview {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #blogCard {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4a90e2;
+            border-right: 5px solid #4a90e2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+        }
+
+        #forBlogTitle {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #forBlogDescription {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="title">
+        <h2>Welcome <span id="currentUser"></span></h2> 
+        <button onclick="logOut()">Log Out</button>
+    </div>
+
+
+    <div class="postMaker">
+        <div>
+            <!-- <label for="blogtitle"> Blog Title:</label> -->
+            <input placeholder="Blog Title" id="blogtitle" type="text">
+        </div>
+
+        <div>
+            <!-- <label for="blogdescription"> Blog Description:</label> -->
+            <input placeholder="Blog Description" id="blogdescription" type="text">
+        </div>
+
+
+
+    </div>
+    <button id="post" onclick="postBlog()">Post </button>
+
+    <div id="blogPreview">
+
+        <div id="blogCard">
+            <p id="forBlogTitle">
+
+            </p>
+            <p id="forBlogDescription">
+
+            </p>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+<script src="../js/dashboard.js"></script>
