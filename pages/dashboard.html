@@ -50,7 +50,7 @@
         }
 
         .postMaker input {
-            width: 100%;
+            width: 550px;
             padding: 12px;
             margin-top: 10px;
             margin-bottom: 20px;
@@ -100,6 +100,25 @@
             font-size: 16px;
             line-height: 1.6;
         }
+        .img{
+            display: flex;
+            align-items: center;
+        }
+        .img input{
+            border: none;
+            width: 400px;
+        }
+        .img label{
+            font-size: 16px;
+            line-height: 1.6;
+            color: grey;
+        }
+        h4{
+            margin-top: 50px;
+            font-size: 40px;
+            font-weight: lighter;
+            text-align: center;
+        }
     </style>
 
 
@@ -118,8 +137,12 @@
             <input placeholder="Blog Title" id="blogtitle" type="text">
         </div>
 
+        <div class="img">
+            <label for="photo"> Add  blog image</label>
+            <input type="file" id="photo"  onchange="pickPic()">
+        </div>
+
         <div>
-            <!-- <label for="blogdescription"> Blog Description:</label> -->
             <input placeholder="Blog Description" id="blogdescription" type="text">
         </div>
 
@@ -132,7 +155,7 @@
 
         <div id="blogCard">
             <p id="forBlogTitle">
-
+                
             </p>
             <p id="forBlogDescription">
 

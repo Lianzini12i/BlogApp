@@ -1,9 +1,20 @@
 let userDatabase = JSON.parse(localStorage.getItem('augustJsDatabase')) || []
 
 
-let currentUserIndex = Number(localStorage.getItem('augustJsUserIndex'))
+let currentUserIndex = localStorage.getItem('augustJsUserIndex')
+
+let imgMemory = JSON.parse(localStorage.getItem('imgArr')) || []
 
 let currentUserObj = userDatabase[currentUserIndex]
+
+let imgArr = imgMemory || []
+
+function checkUserAuth() {
+    if (!currentUserIndex) {
+        window.location.href = '../pages/login.html'
+    }
+}
+checkUserAuth()
 
 
 console.log(currentUserIndex);
@@ -25,35 +36,64 @@ function postBlog() {
         }
         blogDatabase.push(blog)
         localStorage.setItem('blogDatabase', JSON.stringify(blogDatabase))
+        // localStorage.clear
+        // localStorage.setItem()
         displayBlog()
     }
-
-
 }
+
+
+
+    function pickPic() {
+        let file = document.getElementById('photo').files[0]
+        let reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener('load', (ev)=>{
+            let result = ev.target.result
+            // image.src = result
+            imgArr.push(result)
+        localStorage.setItem('imgArr', JSON.stringify(imgArr))
+       
+
+        })
+    }
+
 
 
 function displayBlog() {
     let BlogPreview = document.getElementById('blogPreview')
     BlogPreview.innerHTML = ""
 
+    // if (!file) {
+    //     alert('Please add an image to the blog.')
+    //     return;
+    // }
 
-    for (let index = 0; index < blogDatabase.length; index++) {
-        const element = blogDatabase[index];
-
-
-        BlogPreview.innerHTML += ` <div id="blogCard">
-        <p id="forBlogTitle">
-            ${element.blogtitle}
-        </p>
-        <p id="forBlogDescription">
-            ${element.blogdescription}
-        </p>
-
-        <button onclick="deletePost(${index})"> Delete </button> <button onclick="editDescription(${index})"> Edit </button>
-    </div>`
+    if (blogDatabase.length === 0) {
+        BlogPreview.innerHTML = `<h4>No blogs yet...</h4>`
+    } else{
+        
+        for (let index = 0; index < blogDatabase.length; index++) {
+            const element = blogDatabase[index];
+    
+    
+            BlogPreview.innerHTML += ` <div id="blogCard">
+            <p id="forBlogTitle">
+                ${element.blogtitle}
+            </p>
+            <img src=${imgArr[index]} id="image" alt="" width="300" height="300">
+            <p id="forBlogDescription">
+                ${element.blogdescription}
+            </p>
+    
+            <button onclick="deletePost(${index})"> Delete </button> <button onclick="editDescription(${index})"> Edit </button>
+        </div>`
+        }
     }
 
 }
+
+
 function logOut() {
     let confirmLogout = window.confirm('are you sure you want to logout?')
     if (confirmLogout) {
@@ -63,12 +103,13 @@ function logOut() {
 }
 
 function editDescription(i) {
-    let editInput = prompt('edit blog description', `${blogDatabase[i].blogdescription}`)
+    let editInput = prompt('Edit Description', blogDatabase[i].blogdescription)
 
         if (editInput !== blogDatabase[i].blogdescription && editInput) {
-        blogDatabase[i].blogdescription = editInput;
-        localStorage.setItem('blogDatabase', JSON.stringify(blogDatabase));
-        displayBlog();
+            // blogDatabase.splice(i, 1, {blogtitle : obj.blogtitle , blogdescription: editedValue})
+            blogDatabase[i].blogdescription = editInput;
+            localStorage.setItem('blogDatabase', JSON.stringify(blogDatabase));
+            displayBlog();
     }
 }
 function deletePost(i) {
@@ -79,7 +120,6 @@ function deletePost(i) {
         displayBlog(); 
     }
 }
-
 
 
 
